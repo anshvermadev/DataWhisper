@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-archivo-black), var(--font-geist-sans), ui-sans-serif, system-ui;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular;
+  
+  --color-neon-green: #B6FF3B;
+  --color-pure-black: #000000;
+  --color-pure-white: #FFFFFF;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #000000;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Diagonal stripes pattern */
+.bg-stripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #B6FF3B,
+    #B6FF3B 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+
+.brutal-box {
+  border: 4px solid #000;
+  background-color: #fff;
+  box-shadow: 6px 6px 0px 0px #000;
+  transition: all 0.2s ease;
+}
+
+.brutal-box:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0px 0px #000;
+}
+
+.brutal-box:active {
+  transform: translate(2px, 2px);
+  box-shadow: 4px 4px 0px 0px #000;
+}
+
+.brutal-input {
+  border: 4px solid #000;
+  background-color: #fff;
+  outline: none;
+}
+.brutal-input:focus {
+  background-color: #f0f0f0;
+}
