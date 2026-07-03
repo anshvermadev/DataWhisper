@@ -1,0 +1,47 @@
+# Sample Questions for Testing DataWhisper
+
+You can use these questions to test the LLM data analysis and charting capabilities for each of the sample CSV files provided in this directory.
+
+---
+
+## 📊 sales.csv
+This dataset contains mock sales data, including orders, quantities, prices, statuses, product lines, and customer details.
+
+**Test Questions:**
+1. "What is the total revenue (sales) for each product line? Show me a bar chart."
+2. "Which territory (EMEA, NA, Japan, etc.) had the highest total sales overall?"
+3. "What is the average MSRP for Classic Cars versus Vintage Cars?"
+4. "Show me the top 3 customers by total amount spent."
+
+---
+
+## 🎓 college_majors_salaries.csv
+This dataset contains data on college majors, graduation rates, employment rates, and median salaries.
+
+**Test Questions:**
+1. "Which Major Category has the highest median salary? Plot this as a bar chart."
+2. "What are the top 5 specific majors with the lowest unemployment rate?"
+3. "Is there a correlation between the total number of graduates in a major and their median salary?"
+4. "Show me a bar chart of the median salary for the top 10 most popular majors."
+
+---
+
+## ✈️ airline_safety.csv
+This dataset tracks incidents, fatal accidents, and fatalities for various airlines across two time periods (85-99 and 00-14).
+
+**Test Questions:**
+1. "Which airline had the most total incidents between 1985 and 1999? Show a bar chart of the top 5."
+2. "What is the total number of fatalities across all airlines from 2000 to 2014?"
+3. "Did any airlines have zero fatal accidents in both time periods?"
+4. "Show me a bar chart comparing the total fatal accidents in 85-99 vs 00-14 for Delta and Southwest."
+
+---
+
+## 🦠 global_covid_latest.csv
+This dataset contains global COVID-19 statistics by country, including total cases, deaths, and recoveries.
+
+**Test Questions:**
+1. "Which 5 countries have the highest number of total cases? Please show a bar chart."
+2. "What is the global average of total deaths per country?"
+3. "Show me a bar chart comparing total cases between the USA, India, Brazil, and the UK."
+4. "Which continent has the highest aggregate number of active cases?"

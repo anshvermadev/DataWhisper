@@ -59,10 +59,10 @@ export default function RootLayout({
 
           {children}
 
-          <footer className="border-t-4 border-black bg-white p-6 mt-auto">
-            <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-sm font-bold uppercase">
+          <footer className="border-t-4 border-black bg-white p-3 mt-auto">
+            <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2 font-mono text-xs font-bold uppercase">
               <div>© 2026 DataWhisper</div>
-              <div className="flex gap-6">
+              <div className="flex gap-4">
                 <Link href="/about" className="hover:text-neon-green hover:bg-black px-2 py-1 transition-colors border-2 border-transparent hover:border-black">About</Link>
                 <Link href="/terms" className="hover:text-neon-green hover:bg-black px-2 py-1 transition-colors border-2 border-transparent hover:border-black">Terms</Link>
                 <Link href="/privacy" className="hover:text-neon-green hover:bg-black px-2 py-1 transition-colors border-2 border-transparent hover:border-black">Privacy</Link>
