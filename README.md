@@ -3,6 +3,8 @@
 **An AI-powered conversational data analysis platform.**  
 *Upload raw CSV datasets and interactively "talk" to your data using natural language.*
 
+🚀 **Built with [RocketRide](https://rocketride.org/)** | [Documentation](https://docs.rocketride.org/) | [GitHub](https://github.com/rocketride-org)
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" alt="Red Line GIF" width="100%"/>
 </div>
