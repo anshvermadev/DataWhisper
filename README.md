@@ -7,6 +7,8 @@
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" alt="Red Line GIF" width="100%"/>
 </div>
 
+> 📸 **Note:** Scroll to the bottom of this page to see high-resolution screenshots of the DataWhisper!
+
 ## 🌍 The Real-World Problem We Were Facing
 
 In modern enterprises, data is abundant, but actionable insights are scarce. The traditional data analysis workflow is fundamentally broken and creates massive inefficiencies:
