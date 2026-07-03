@@ -1,0 +1,180 @@
+{
+  "components": [
+    {
+      "id": "chat_1",
+      "provider": "chat",
+      "name": "Chat",
+      "config": {
+        "hideForm": true,
+        "mode": "Source",
+        "parameters": {},
+        "type": "chat"
+      },
+      "ui": {
+        "position": {
+          "x": -10,
+          "y": 200
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      }
+    },
+    {
+      "id": "agent_rocketride_1",
+      "provider": "agent_rocketride",
+      "name": "RocketRide Wave",
+      "config": {
+        "instructions": [
+          "You are DataWhisper, an expert data analyst assistant.",
+          "You will be given a SCHEMA, some SAMPLE ROWS, and a QUESTION from the user.",
+          "Your ONLY task is to fulfill the user's question with 100% numerical accuracy.",
+          "DO NOT COMPUTE ANY NUMBERS YOURSELF. You must use the HTTP tool to execute a plan.",
+          "1. Determine the appropriate Pandas operation (e.g., groupby, filter, sort, pct_change) to answer the question.",
+          "2. Formulate a JSON plan describing this operation.",
+          "3. Call the HTTP tool using a POST request to http://localhost:8000/internal/compute",
+          "   The body of the request must be the JSON plan.",
+          "4. The API will return a JSON object with this exact contract: { 'value': <string/number/array>, 'operation_used': <string>, 'rows_matched': <integer> }",
+          "5. If 'value' is a single number/string, insert it verbatim into your narration. If 'value' is an array or list of multiple rows, DO NOT output the raw JSON array in your narration. Instead, write a natural English sentence like 'Here is the data breakdown:' or summarize the top result.",
+          "6. Recommend an appropriate chart type (bar, line, or pie) and the x/y columns.",
+          "7. Output ONLY a JSON response in the following exact format (no markdown formatting, no backticks):",
+          "   {",
+          "     \"answer\": \"<your plain English narration using the verbatim value>\",",
+          "     \"numbers\": <the verbatim value from the API>,",
+          "     \"columns_used\": [\"<col1>\", \"<col2>\"],",
+          "     \"operation\": \"<the operation_used from the API>\",",
+          "     \"chart\": { \"type\": \"<bar|line|pie>\", \"x\": \"<col_name>\", \"y\": \"<col_name>\" },",
+          "     \"plan\": <your original plan object>",
+          "   }"
+        ],
+        "max_waves": 3,
+        "parameters": {}
+      },
+      "ui": {
+        "position": {
+          "x": 240,
+          "y": 200
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "questions",
+          "from": "chat_1"
+        }
+      ]
+    },
+    {
+      "id": "response_answers_1",
+      "provider": "response_answers",
+      "name": "Return Answers",
+      "config": {
+        "laneName": "answers"
+      },
+      "ui": {
+        "position": {
+          "x": 470,
+          "y": 210
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "answers",
+          "from": "agent_rocketride_1"
+        }
+      ]
+    },
+    {
+      "id": "llm_gemini_1",
+      "provider": "llm_gemini",
+      "name": "Gemini",
+      "config": {
+        "profile": "gemini-3_1-flash-lite-preview",
+        "gemini-3_1-flash-lite-preview": {
+          "apikey": "${ROCKETRIDE_GEMINI_KEY}"
+        },
+        "parameters": {}
+      },
+      "ui": {
+        "position": {
+          "x": 100,
+          "y": 390
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "control": [
+        {
+          "classType": "llm",
+          "from": "agent_rocketride_1"
+        }
+      ]
+    },
+    {
+      "id": "tool_http_request_1",
+      "provider": "tool_http_request",
+      "name": "HTTP Request",
+      "config": {
+        "type": "tool_http_request",
+        "allowGET": true,
+        "allowPOST": true,
+        "allowPUT": true,
+        "allowPATCH": true,
+        "allowDELETE": true,
+        "allowHEAD": true,
+        "allowOPTIONS": true,
+        "rateLimitPerSecond": 10,
+        "rateLimitPerMinute": 100,
+        "maxConcurrentRequests": 5,
+        "urlWhitelist": []
+      },
+      "ui": {
+        "position": {
+          "x": 460,
+          "y": 410
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "control": [
+        {
+          "classType": "tool",
+          "from": "agent_rocketride_1"
+        }
+      ]
+    },
+    {
+      "id": "memory_internal_1",
+      "provider": "memory_internal",
+      "name": "Memory (Internal)",
+      "config": {
+        "type": "memory_internal"
+      },
+      "ui": {
+        "position": {
+          "x": 280,
+          "y": 400
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "control": [
+        {
+          "classType": "memory",
+          "from": "agent_rocketride_1"
+        }
+      ]
+    }
+  ],
+  "project_id": "6d6b677a-b96e-4e6a-bc07-b84553303cb5",
+  "version": 1,
+  "isLocked": false,
+  "snapToGrid": true,
+  "snapGridSize": [
+    10,
+    10
+  ],
+  "docRevision": 11
+}
