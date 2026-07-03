@@ -40,6 +40,36 @@ Crucially, we solve the "hallucination" problem by **not** asking the LLM to gue
   <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" alt="Red Line GIF" width="100%"/>
 </div>
 
+## 💻 How to Run & Use
+
+**1. Start the RocketRide Engine**
+1. Install the **RocketRide** VS Code Extension.
+2. Wait for the Engine to start successfully.
+3. Click "Connect Local" to bind the engine to your local workspace.
+> 💡 *Note on Pipelines: The Engine automatically loads the `pipelines/analyze.pipe` file, which acts as the "brain" of the app, orchestrating the LLM to translate your questions into executable Python code.*
+
+**2. Start the Backend (FastAPI)**
+```bash
+cd backend
+python -m venv venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+**3. Start the Frontend (Next.js)**
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+**Usage:** Open `http://localhost:3000`. Drag and drop a CSV file (feel free to use one from our `samples/` folder) and start chatting with your data!
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" alt="Red Line GIF" width="100%"/>
+</div>
+
 ## 🏗️ System Architecture
 
 Our application is cleanly decoupled into three primary components: a **Next.js Frontend**, a **FastAPI Backend**, and a **RocketRide Cognitive Pipeline**.
